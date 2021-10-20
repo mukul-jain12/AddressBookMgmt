@@ -27,6 +27,7 @@ public class AddressBook {
 					break;
 				case 4:
 					contact.displayContact();
+					break;
 				case 0:
 					System.out.println("Exit from application");
 					System.exit(0);
