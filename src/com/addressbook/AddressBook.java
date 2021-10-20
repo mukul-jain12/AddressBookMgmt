@@ -13,7 +13,7 @@ public class AddressBook {
 		
 		//menu to select option
 		while (true) {
-			System.out.println("Enter \n 1 To add The contact \n 2 To edit the contact \n 0 To exit");
+			System.out.println("Enter \n 1 To add The contact \n 2 To edit the contact \n 3 To delete contact \n 4 To display contact \n 0 To exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 				case 1:
@@ -22,6 +22,11 @@ public class AddressBook {
 				case 2:
 					contact.editContact();
 					break;
+				case 3:
+					contact.deleteContact();
+					break;
+				case 4:
+					contact.displayContact();
 				case 0:
 					System.out.println("Exit from application");
 					System.exit(0);
