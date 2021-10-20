@@ -18,6 +18,25 @@ public class Contact {
 		}
 	}
 
+	//edit contact method
+	public void editContact() {
+		System.out.println("Enter the first name of person to edit contact");
+		String editName = sc.next();
+		boolean edited = false;
+		
+		for (int i = 0; i < Contactlist.size(); i++) {
+			String name = Contactlist.get(i).getFirstName();
+			if (name.equals(editName)) {
+				createContact();
+				edited = true;
+				break;
+			}
+		}
+		if (!edited) {
+			System.out.println("Invalid input");
+		}
+	}
+	
 	//creating contact
 	public void createContact() {
 
