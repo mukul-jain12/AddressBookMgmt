@@ -11,11 +11,7 @@ public class Contact {
 
 	//add contact method
 	public void addContact() {
-		System.out.println("number of contacts to be added");
-		int n =sc.nextInt();
-		for (int i=0;i<n;i++) {
-			createContact();
-		}
+		createContact();
 	}
 
 	//edit contact method
