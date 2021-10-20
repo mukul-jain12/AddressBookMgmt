@@ -11,7 +11,11 @@ public class Contact {
 
 	//add contact method
 	public void addContact() {
-		createContact();
+		System.out.println("Enter Number of contacts to be added");
+		int n =sc.nextInt();
+		for (int i=0;i<n;i++) {
+			createContact();
+		}
 	}
 
 	//edit contact method
@@ -51,7 +55,21 @@ public class Contact {
 		}
 		if (!deleted) {
 			System.out.println("Name does not exit");
-		}	
+		}
+	}
+	
+	//display contacts
+	public void displayContact(){
+		int i = 1;
+		if (Contactlist.size() != 0) {
+			for(PersonInformation contactlist : Contactlist) {
+				System.out.println(i + " " +contactlist);
+				i++;
+			}
+		}
+		else {
+			System.out.println("No data to display");
+		}
 	}
 
 	//creating contact
