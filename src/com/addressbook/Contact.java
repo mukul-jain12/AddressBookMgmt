@@ -11,11 +11,7 @@ public class Contact {
 
 	//add contact method
 	public void addContact() {
-		System.out.println("number of contacts to be added");
-		int n =sc.nextInt();
-		for (int i=0;i<n;i++) {
-			createContact();
-		}
+		createContact();
 	}
 
 	//edit contact method
@@ -23,7 +19,7 @@ public class Contact {
 		System.out.println("Enter the first name of person to edit contact");
 		String editName = sc.next();
 		boolean edited = false;
-		
+
 		for (int i = 0; i < Contactlist.size(); i++) {
 			String name = Contactlist.get(i).getFirstName();
 			if (name.equals(editName)) {
@@ -36,7 +32,28 @@ public class Contact {
 			System.out.println("Invalid input");
 		}
 	}
-	
+
+	//delete contact method
+	public void deleteContact() {
+		System.out.println("Enter the first name of person to edit contact");
+		String deleteName = sc.next();
+		boolean deleted = false;
+		
+		//take list name one by one
+		for (int i = 0; i < Contactlist.size(); i++) {
+			String name = Contactlist.get(i).getFirstName();
+			if (name.equals(deleteName)) {
+				deleted = true;
+				Contactlist.remove(i);
+				printContact();
+				break;
+			}
+		}
+		if (!deleted) {
+			System.out.println("Name does not exit");
+		}	
+	}
+
 	//creating contact
 	public void createContact() {
 

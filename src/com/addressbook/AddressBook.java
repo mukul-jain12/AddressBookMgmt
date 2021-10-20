@@ -22,6 +22,8 @@ public class AddressBook {
 				case 2:
 					contact.editContact();
 					break;
+				case 3:
+					contact.deleteContact();
 				case 0:
 					System.out.println("Exit from application");
 					System.exit(0);
