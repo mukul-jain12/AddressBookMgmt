@@ -3,7 +3,7 @@ package com.addressbook;
 import java.util.*;
 
 public class MultipleAddressBooks {
-	Map<String, Contact> contactService = new HashMap<>();
+	HashMap<String, Contact> contactService = new HashMap<>();
 
 	public void addAddressBook() {
 		System.out.println("Enter Name of new Address Book: ");
@@ -83,7 +83,7 @@ public class MultipleAddressBooks {
 		int countContact = 1;
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
 			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
-			System.out.println(countContact + " " + entry.getValue().contactDetailsList);
+			System.out.println(countContact + " " + entry.getValue().contactList);
 			countContact++;
 		}
 		System.out.println(" ");
