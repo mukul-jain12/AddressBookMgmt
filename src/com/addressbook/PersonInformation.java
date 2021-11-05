@@ -1,97 +1,74 @@
 package com.addressbook;
 
 public class PersonInformation {
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
-	private String  phonenumber;
-	private String email;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String city;
+    private String state;
+    private int zipCode;
+    private long mobileNumber;
+    private String emailId;
 
+    public PersonInformation() {
 
-	//information construction
-	public PersonInformation(String firstName,String lastName,String address,String city,String state,String zip2,String  phoneNumber2,String email)
-	{
-		this.firstName= firstName;
-		this.lastName= lastName;
-		this.address=address;
-		this.city=city;
-		this.state=state;
-		this.zip=zip2;
-		this.phonenumber=phoneNumber2;
-		this.email=email;
-	}
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public PersonInformation(String firstName, String lastName, String address, String city,
+                          String state, int zipCode, long mobileNumber, String emailId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.mobileNumber = mobileNumber;
+        this.emailId = emailId;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public int getZipCode() {
+        return zipCode;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public long getMobileNo() {
+        return mobileNumber;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getEmailId() {
+        return emailId;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	public String  getPhonenumber() {
-		return phonenumber;
-	}
-
-	public void setPhonenumber(String  phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-				+ city + ", state=" + state + ", zip=" + zip + ", phonenumber=" + phonenumber + ", email=" + email
-				+ "]";
-	}
+    @Override
+    public String toString() {
+        return "{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode=" + zipCode +
+                ", mobileNo=" + mobileNumber +
+                ", emailId='" + emailId + '\'' +
+                '}';
+    }
 }

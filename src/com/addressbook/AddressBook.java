@@ -1,40 +1,47 @@
-//address book management system
-
 package com.addressbook;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
 	public static void main(String[] args) {
+		AddressBook addressBook = new AddressBook();
 		
-		System.out.println("Welcome to the AddressBook Management System");
-		Scanner sc = new Scanner(System.in);
-		Contact contact = new Contact();
+		MultipleAddressBooks multiAddressBook = new MultipleAddressBooks();
 		
-		//menu to select option
 		while (true) {
-			System.out.println("Enter \n 1 To add The contact \n 2 To edit the contact \n 3 To delete contact \n 4 To display contact \n 0 To exit");
-			int choice = sc.nextInt();
+			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
+					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
+					"6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 0. Exit Applcation");
+			Scanner scanner = new Scanner(System.in);
+			int choice = scanner.nextInt();
 			switch (choice) {
-				case 1:
-					contact.addContact();
-					break;
-				case 2:
-					contact.editContact();
-					break;
-				case 3:
-					contact.deleteContact();
-					break;
-				case 4:
-					contact.displayContact();
-					break;
-				case 0:
-					System.out.println("Exit from application");
-					System.exit(0);
-					break;
-				default:
-					System.out.println("Invalid input");
-					continue;
+			case 1:
+				multiAddressBook.addAddressBook();
+				break;
+			case 2:
+				multiAddressBook.addContact();
+				break;
+			case 3:
+				multiAddressBook.editContactInBook();
+				break;
+			case 4:
+				multiAddressBook.deleteContactInBook();
+				break;
+			case 5:
+				multiAddressBook.deleteAddressBook();
+				break;
+			case 6:
+				multiAddressBook.printBook();
+				break;
+			case 7:
+				multiAddressBook.printContactsInBook();
+				break;
+			case 0:
+				System.out.println("Exit Application");
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Enter the wrong input");
 			}
 		}
 	}
