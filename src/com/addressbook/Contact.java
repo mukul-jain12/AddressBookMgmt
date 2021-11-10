@@ -60,6 +60,7 @@ public class Contact {
 			String emailId = scanner.next();
 			person = new PersonInformation(firstName, lastName, address, city, state, zipCode, mobileNumber, emailId);
 			contactList.add(person);
+			System.out.println(contactList);
 		}
 	}
 
@@ -104,9 +105,22 @@ public class Contact {
 		}
 	}
 	
-	//seacrh by city and state name
-	public void searchByValue(String name) {
-		List<PersonInformation> searchData = contactList.stream().filter(contactInfo -> contactInfo.getCity().equalsIgnoreCase(name)).collect(Collectors.toList());
+	//seacrh by city name
+	public void searchByCity() {
+		System.out.println("Enter city: ");
+		String city = scanner.next();
+        List<PersonInformation> collectList = contactList.stream().filter(contactInfo -> contactInfo.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
+		System.out.println(collectList);
+        for (PersonInformation contact : collectList) {
+            System.out.println("Search result: " + contact);
+        }
+    }
+
+	//seacrh by state name
+	public void searchByState() {
+		System.out.println("Enter State: ");
+		String state = scanner.next();
+		List<PersonInformation> searchData = contactList.stream().filter(contactInfo -> contactInfo.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
 		for (PersonInformation contact : searchData) {
 			System.out.println("Search result: " + contact);
 		}

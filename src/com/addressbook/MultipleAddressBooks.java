@@ -75,30 +75,6 @@ public class MultipleAddressBooks {
 			deleteContactInBook();
 		}
 	}
-	
-	public void searchContact() {
-		while (true) {
-			System.out.println("Enter\n 1. By city\n 2. By state\n 3. for previous menu");
-			int choice = scanner.nextInt();
-			scanner.nextLine();
-			switch (choice) {
-			case 1:
-				System.out.println("Enter city: ");
-				String city = scanner.next();
-				contact.searchByValue(city);
-				break;
-			case 2:
-				System.out.println("Enter State: ");
-				String state = scanner.next();
-				contact.searchByValue(state);
-				break;
-			case 3:
-				return;
-			default:
-				System.out.println("Please enter correct choice");
-			}
-		}
-	}
 
 	public void printBook() {
 		System.out.println("Address Book Programs are: ");
