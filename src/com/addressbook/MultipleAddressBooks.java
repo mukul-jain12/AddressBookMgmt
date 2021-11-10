@@ -1,8 +1,11 @@
 package com.addressbook;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MultipleAddressBooks {
+	PersonInformation person = new PersonInformation();
+	List<PersonInformation> contactList = new ArrayList<>();
 	HashMap<String, Contact> contactService = new HashMap<>();
 
 	public void addAddressBook() {
