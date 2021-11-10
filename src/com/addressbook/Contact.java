@@ -1,16 +1,17 @@
 package com.addressbook;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Contact {
+	Scanner scanner = new Scanner(System.in);
 
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
 
 	public void addContact() {
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the number of contacts you want to enter");
 		int number = scanner.nextInt();
 
@@ -24,7 +25,6 @@ public class Contact {
 	public void createContact() {
 		boolean found = false;
 
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter First Name : ");
 		String firstName = scanner.next();
 
@@ -66,7 +66,6 @@ public class Contact {
 	//edit contact in the address book
 	public void editContact() {
 		System.out.println("Enter the first name of person to edit contact");
-		Scanner scanner = new Scanner(System.in);
 		String editName = scanner.next();
 		boolean edited = false;
 
@@ -88,7 +87,6 @@ public class Contact {
 	//delete contact details from address book
 	public void deleteContact() {
 		System.out.println("Enter the first name of person to delete contact");
-		Scanner scanner = new Scanner(System.in);
 		String deleteName = scanner.next();
 		int i = 0;
 
@@ -103,6 +101,14 @@ public class Contact {
 			System.out.println("Contact Deleted");
 		}else {
 			System.out.println("Contact not find");
+		}
+	}
+	
+	//seacrh by city and state name
+	public void searchByValue(String name) {
+		List<PersonInformation> searchData = contactList.stream().filter(contactInfo -> contactInfo.getCity().equalsIgnoreCase(name)).collect(Collectors.toList());
+		for (PersonInformation contact : searchData) {
+			System.out.println("Search result: " + contact);
 		}
 	}
 }

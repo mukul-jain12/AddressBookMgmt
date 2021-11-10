@@ -1,16 +1,21 @@
 package com.addressbook;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class MultipleAddressBooks {
+	Scanner scanner = new Scanner(System.in);
+	
+	Contact contact = new Contact();
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
 	HashMap<String, Contact> contactService = new HashMap<>();
 
 	public void addAddressBook() {
 		System.out.println("Enter Name of new Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			System.out.println("Address book with this name exists, Enter new name.");
@@ -28,7 +33,6 @@ public class MultipleAddressBooks {
 
 	public void addContact() {
 		System.out.println("Enter the name of Address book to add the contact.");
-		Scanner scanner = new Scanner(System.in);
 		String newContact = scanner.nextLine();
 		Contact addressBook = contactService.get(newContact);
 		if (addressBook == null) {
@@ -41,7 +45,6 @@ public class MultipleAddressBooks {
 
 	public void editContactInBook() {
 		System.out.println("Enter Name to Edit Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String editBookName = scanner.next();
 		if (contactService.containsKey(editBookName)) {
 			contactService.get(editBookName).editContact();
@@ -53,7 +56,6 @@ public class MultipleAddressBooks {
 
 	public void deleteAddressBook() {
 		System.out.println("Enter Name to Delete Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			contactService.remove(bookName);
@@ -65,13 +67,36 @@ public class MultipleAddressBooks {
 
 	public void deleteContactInBook() {
 		System.out.println("Enter Name to delete the contacts from Address Book : ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			contactService.get(bookName).deleteContact();
 		} else {
 			System.out.println("AddressBook doesn't exist!!");
 			deleteContactInBook();
+		}
+	}
+	
+	public void searchContact() {
+		while (true) {
+			System.out.println("Enter\n 1. By city\n 2. By state\n 3. for previous menu");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter city: ");
+				String city = scanner.next();
+				contact.searchByValue(city);
+				break;
+			case 2:
+				System.out.println("Enter State: ");
+				String state = scanner.next();
+				contact.searchByValue(state);
+				break;
+			case 3:
+				return;
+			default:
+				System.out.println("Please enter correct choice");
+			}
 		}
 	}
 
