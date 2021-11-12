@@ -126,6 +126,33 @@ public class MultipleAddressBooks {
 		}
 	}
 
+	//count number of contacts in all address books using city or state name
+	public void sortConacts() {
+		while (true) {
+			System.out.println("Enter\n 1. By name\n 2. By city\n 3. By state\n 4. By zip code\n0. for previous menu");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			switch (choice) {
+			case 1:
+				sortByName();
+				break;
+			case 2:
+				sortByCity();
+				break;
+			case 3:
+				sortByState();
+				break;
+			case 4:
+				sortByZip();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("Entered choice is incorrect!.. please enter correct choice");
+			}
+		}
+	}
+
 	//search contact by state name
 	public void searchByState(String state) {
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
@@ -175,6 +202,33 @@ public class MultipleAddressBooks {
 			List<PersonInformation> contactListByState = entry.getValue().contactList;
 			List<PersonInformation> list = contactListByState.stream().collect(Collectors.toList());
 			list.stream().sorted((g1, g2) -> ((String)g1.getFirstName()).compareTo(g2.getFirstName())).forEach(contact -> System.out.println(contact));
+		}
+	}
+	
+	public void sortByCity(){
+		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
+			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
+			List<PersonInformation> contactListByState = entry.getValue().contactList;
+			List<PersonInformation> list = contactListByState.stream().collect(Collectors.toList());
+			list.stream().sorted((g1, g2) -> ((String)g1.getCity()).compareTo(g2.getCity())).forEach(contact -> System.out.println(contact));
+		}
+	}
+	
+	public void sortByState(){
+		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
+			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
+			List<PersonInformation> contactListByState = entry.getValue().contactList;
+			List<PersonInformation> list = contactListByState.stream().collect(Collectors.toList());
+			list.stream().sorted((g1, g2) -> ((String)g1.getState()).compareTo(g2.getState())).forEach(contact -> System.out.println(contact));
+		}
+	}
+	
+	public void sortByZip(){
+		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
+			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
+			List<PersonInformation> contactListByState = entry.getValue().contactList;
+			List<PersonInformation> list = contactListByState.stream().collect(Collectors.toList());
+			list.stream().sorted((g1, g2) -> ((Integer)g1.getZipCode()).compareTo(g2.getZipCode())).forEach(contact -> System.out.println(contact));
 		}
 	}
 
