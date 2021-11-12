@@ -1,12 +1,11 @@
 package com.addressbook;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class AddressBook {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		MultipleAddressBooks multiAddressBook = new MultipleAddressBooks();
-
 		while (true) {
 			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
 					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
@@ -40,6 +39,9 @@ public class AddressBook {
 				break;
 			case 9:
 				multiAddressBook.printContactsInBook();
+				break;
+			case 10:
+				multiAddressBook.sortByName();
 				break;
 			case 0:
 				System.out.println("Exit Application");

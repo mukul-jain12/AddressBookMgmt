@@ -9,7 +9,7 @@ public class Contact {
 	Scanner scanner = new Scanner(System.in);
 
 	PersonInformation person = new PersonInformation();
-	static List<PersonInformation> contactList = new ArrayList<>();
+	List<PersonInformation> contactList = new ArrayList<>();
 
 	public void addContact() {
 		System.out.println("Enter the number of contacts you want to enter");
@@ -103,33 +103,5 @@ public class Contact {
 		}else {
 			System.out.println("Contact not find");
 		}
-	}
-	
-	//search contact by city name
-	public void searchByCity(String city) {
-		List<PersonInformation> collect = contactList.stream().filter(p -> p.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
-		for (PersonInformation contact : collect) {
-			System.out.println("Search result: " + contact);
-		}
-	}
-
-	//search contact by state name
-	public void searchByState(String state) {
-		List<PersonInformation> collect = contactList.stream().filter(p -> p.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
-		for (PersonInformation contact : collect) {
-			System.out.println("Search result: " + contact);
-		}
-	}
-
-	//count contact by city name
-	public void countByCity(String cityName) {
-		long count = contactList.stream().filter(g -> g.getCity().equalsIgnoreCase(cityName)).count();
-		System.out.println("Total Number of Contact from '" + cityName + "' city is " + count);
-	}
-	
-	//count contact by state name
-	public void countByState(String stateName) {
-		long count1 = contactList.stream().filter(g -> g.getState().equalsIgnoreCase(stateName)).count();
-		System.out.println("Total Number of Contact from '" + stateName + "' state is" + count1);
 	}
 }
