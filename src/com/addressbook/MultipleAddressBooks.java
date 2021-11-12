@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MultipleAddressBooks {
 	Scanner scanner = new Scanner(System.in);
-	
+
 	Contact contact = new Contact();
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
@@ -21,7 +21,6 @@ public class MultipleAddressBooks {
 			System.out.println("Address book with this name exists, Enter new name.");
 			addAddressBook();
 		} else {
-			Contact contact = new Contact();
 			contactService.put(bookName, contact);
 			System.out.println("press 1 if you want to add another book.");
 			int newBook = scanner.nextInt();
@@ -35,11 +34,11 @@ public class MultipleAddressBooks {
 		System.out.println("Enter the name of Address book to add the contact.");
 		String newContact = scanner.nextLine();
 		Contact addressBook = contactService.get(newContact);
-		if (addressBook == null) {
-			System.out.println("No address book with this name");
-
-		} else {
+		if (addressBook != null) {
 			contactService.get(newContact).addContact();
+		}
+		else {
+			System.out.println("No address book with this name");
 		}
 	}
 
@@ -91,5 +90,55 @@ public class MultipleAddressBooks {
 			countContact++;
 		}
 		System.out.println(" ");
+	}
+
+	//search contacts using city or state name
+	public void searchContacts() {
+		while (true) {
+			System.out.println("Enter\n 1. By city\n 2. By state\n 0. for previous menu");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter city: ");
+				String city = scanner.nextLine();
+				contact.searchByCity(city);
+				break;
+			case 2:
+				System.out.println("Enter state: ");
+				String state = scanner.nextLine();
+				contact.searchByState(state);
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("Entered choice is incorrect!.. please enter correct choice");
+			}
+		}
+	}
+
+	//count number of contacts in all address books using city or state name
+	public void countContacts() {
+		while (true) {
+			System.out.println("Enter\n 1. By city\n 2. By state\n 0. for previous menu");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter city: ");
+				String city = scanner.nextLine();
+				contact.countByCity(city);
+				break;
+			case 2:
+				System.out.println("Enter state: ");
+				String state = scanner.nextLine();
+				contact.countByState(state);
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("Entered choice is incorrect!.. please enter correct choice");
+			}
+		}
 	}
 }

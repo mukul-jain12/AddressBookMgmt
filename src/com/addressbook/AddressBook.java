@@ -5,13 +5,12 @@ import java.util.*;
 public class AddressBook {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		Contact contact = new Contact();
 		MultipleAddressBooks multiAddressBook = new MultipleAddressBooks();
 
 		while (true) {
 			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
 					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
-					"6. Search Contact By City in AddressBook\n 7. Search Contact By State in AddressBook\n 8. Print the AddressBook\n 9. Print the contacts in AddressBook\n 0. Exit Applcation");
+					"6. Search Contact By City and State in AddressBook\n 7. Count Number of Contacts By City and State in AddressBook\n 8. Print the AddressBook\n 9. Print the contacts in AddressBook\n 0. Exit Applcation");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -31,10 +30,10 @@ public class AddressBook {
 				multiAddressBook.deleteAddressBook();
 				break;
 			case 6:
-				contact.searchByCity();
+				multiAddressBook.searchContacts();
 				break;
 			case 7:
-				contact.searchByState();
+				multiAddressBook.countContacts();
 				break;
 			case 8:
 				multiAddressBook.printBook();

@@ -9,7 +9,7 @@ public class Contact {
 	Scanner scanner = new Scanner(System.in);
 
 	PersonInformation person = new PersonInformation();
-	List<PersonInformation> contactList = new ArrayList<>();
+	static List<PersonInformation> contactList = new ArrayList<>();
 
 	public void addContact() {
 		System.out.println("Enter the number of contacts you want to enter");
@@ -28,7 +28,7 @@ public class Contact {
 		System.out.println("Enter First Name : ");
 		String firstName = scanner.next();
 
-		//checked duplicate name in th eaddress book
+		//checked duplicate name in the address book
 		for (int j = 0; j < contactList.size(); j++) {
 
 			List<String> names = contactList.stream().map(PersonInformation::getFirstName).collect(Collectors.toList());
@@ -105,24 +105,31 @@ public class Contact {
 		}
 	}
 	
-	//seacrh by city name
-	public void searchByCity() {
-		System.out.println("Enter city: ");
-		String city = scanner.next();
-        List<PersonInformation> collectList = contactList.stream().filter(contactInfo -> contactInfo.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
-		System.out.println(collectList);
-        for (PersonInformation contact : collectList) {
-            System.out.println("Search result: " + contact);
-        }
-    }
-
-	//seacrh by state name
-	public void searchByState() {
-		System.out.println("Enter State: ");
-		String state = scanner.next();
-		List<PersonInformation> searchData = contactList.stream().filter(contactInfo -> contactInfo.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
-		for (PersonInformation contact : searchData) {
+	//search contact by city name
+	public void searchByCity(String city) {
+		List<PersonInformation> collect = contactList.stream().filter(p -> p.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
+		for (PersonInformation contact : collect) {
 			System.out.println("Search result: " + contact);
 		}
+	}
+
+	//search contact by state name
+	public void searchByState(String state) {
+		List<PersonInformation> collect = contactList.stream().filter(p -> p.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
+		for (PersonInformation contact : collect) {
+			System.out.println("Search result: " + contact);
+		}
+	}
+
+	//count contact by city name
+	public void countByCity(String cityName) {
+		long count = contactList.stream().filter(g -> g.getCity().equalsIgnoreCase(cityName)).count();
+		System.out.println("Total Number of Contact from '" + cityName + "' city is " + count);
+	}
+	
+	//count contact by state name
+	public void countByState(String stateName) {
+		long count1 = contactList.stream().filter(g -> g.getState().equalsIgnoreCase(stateName)).count();
+		System.out.println("Total Number of Contact from '" + stateName + "' state is" + count1);
 	}
 }
