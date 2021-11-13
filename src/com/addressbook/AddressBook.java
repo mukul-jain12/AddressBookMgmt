@@ -1,16 +1,18 @@
 package com.addressbook;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddressBook {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		MultipleAddressBooks multiAddressBook = new MultipleAddressBooks();
 		while (true) {
 			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
 					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
 					"6. Search Contact By City and State in AddressBook\n 7. Count Number of Contacts By City and State in AddressBook\n "+
-					"8. Print the AddressBook\n 9. Print the contacts in AddressBook\n 10. Sort the contacts in AddressBook\n 0. Exit Applcation");
+					"8. Print the AddressBook\n 9. Print the contacts in AddressBook\n 10. Sort the contacts in AddressBook\n "+ 
+					"11. Write the contacts in AddressBook\n 12. Read the contacts from AddressBook\n 0. Exit Applcation");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -43,6 +45,12 @@ public class AddressBook {
 				break;
 			case 10:
 				multiAddressBook.sortConacts();
+				break;
+			case 11:
+				multiAddressBook.writeToFile();
+				break;
+			case 12:
+				multiAddressBook.readFromFile();;
 				break;
 			case 0:
 				System.out.println("Exit Application");

@@ -1,5 +1,8 @@
 package com.addressbook;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +13,7 @@ import java.util.stream.Collectors;
 public class MultipleAddressBooks {
 	Scanner scanner = new Scanner(System.in);
 
+	static final String RESOURCE_FILE_PATH = "F:\\RFP-070\\LinecomparisonOOPs\\AddressBookMgmt\\src\\com\\resource\\AddressBookDetails.txt";
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
 	HashMap<String, Contact> contactService = new HashMap<>();
@@ -204,7 +208,7 @@ public class MultipleAddressBooks {
 			list.stream().sorted((g1, g2) -> ((String)g1.getFirstName()).compareTo(g2.getFirstName())).forEach(contact -> System.out.println(contact));
 		}
 	}
-	
+
 	public void sortByCity(){
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
 			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
@@ -213,7 +217,7 @@ public class MultipleAddressBooks {
 			list.stream().sorted((g1, g2) -> ((String)g1.getCity()).compareTo(g2.getCity())).forEach(contact -> System.out.println(contact));
 		}
 	}
-	
+
 	public void sortByState(){
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
 			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
@@ -222,7 +226,7 @@ public class MultipleAddressBooks {
 			list.stream().sorted((g1, g2) -> ((String)g1.getState()).compareTo(g2.getState())).forEach(contact -> System.out.println(contact));
 		}
 	}
-	
+
 	public void sortByZip(){
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
 			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
@@ -246,5 +250,34 @@ public class MultipleAddressBooks {
 			System.out.println(entry.getValue().contactList);
 		}
 		System.out.println(" ");
+	}
+
+	public void writeToFile() throws IOException {
+		FileWriter fw = new FileWriter(RESOURCE_FILE_PATH);
+		System.out.println("File Writing Started");
+
+		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
+			fw.write("The contacts in the Book of < ''" + entry.getKey() + "'' > are : \n");
+			List<PersonInformation> contList = entry.getValue().contactList;
+			for(int i=0;i<contList.size();i++) {
+				fw.write("	{ First Name :" + contList.get(i).getFirstName() + 
+						", Last Name :" + contList.get(i).getLastName() + 
+						", Address : " + contList.get(i).getAddress() +
+						", City : " + contList.get(i).getCity() +
+						", State : " + contList.get(i).getState() + 
+						", ZipCode : " + contList.get(i).getZipCode() + 
+						", Mobile Number : " + contList.get(i).getMobileNo() +
+						", EmailID : " + contList.get(i).getEmailId()+" }\n");
+			}
+		}
+		fw.close();
+		System.out.println("File Writing Stopped");
+	}
+	public void readFromFile() throws IOException {
+		FileReader fileReader = new FileReader(RESOURCE_FILE_PATH);
+		Scanner scanfile = new Scanner(fileReader);
+		scanfile.useDelimiter("\\Z");
+		System.out.println(scanfile.next() +" ");
+		scanfile.close();
 	}
 }
