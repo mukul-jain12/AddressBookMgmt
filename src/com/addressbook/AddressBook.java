@@ -12,7 +12,7 @@ public class AddressBook {
 					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
 					"6. Search Contact By City and State in AddressBook\n 7. Count Number of Contacts By City and State in AddressBook\n "+
 					"8. Print the AddressBook\n 9. Print the contacts in AddressBook\n 10. Sort the contacts in AddressBook\n "+ 
-					"11. Write the contacts in AddressBook\n 12. Read the contacts from AddressBook\n 0. Exit Applcation");
+					"11. Read and Write the contacts in Text file\n 12. Read and Write the contacts in CSV file\n 0. Exit Applcation");
 
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -47,10 +47,10 @@ public class AddressBook {
 				multiAddressBook.sortConacts();
 				break;
 			case 11:
-				multiAddressBook.writeToFile();
+				multiAddressBook.readAndWriteTextFile();
 				break;
 			case 12:
-				multiAddressBook.readFromFile();;
+				multiAddressBook.readAndWriteCSVFile();;
 				break;
 			case 0:
 				System.out.println("Exit Application");
